@@ -1,7 +1,5 @@
 var express = require('express');
-var http = require('http');
 var app = express();
-var server = http.Server(app);
 var websocket = socketio(server);
 var port = process.env.PORT || 8080;
 app.set('view engine', 'ejs');
