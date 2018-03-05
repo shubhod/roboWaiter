@@ -1,5 +1,7 @@
 var express = require('express');
 var app = express();
+var server = http.Server(app);
+var websocket = socketio(server);
 
 // set the port of our application
 // process.env.PORT lets the port be set by Heroku
@@ -20,4 +22,10 @@ app.get('/', function(req, res) {
 
 app.listen(port, function() {
 	console.log('Our app is running on http://localhost:' + port);
+});
+websocket.on('connection', (socket) => {
+  console.log('A client just joined on', socket.id);
+	socket.on("message",(data)=>{
+		console.log(data);
+	})
 });
