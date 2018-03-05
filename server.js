@@ -27,5 +27,6 @@ websocket.on('connection', (socket) => {
   console.log('A client just joined on', socket.id);
 	socket.on("message",(data)=>{
 		console.log(data);
-	})
+	});
+	socket.emit("m","fsfd");
 });
