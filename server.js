@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var http = require('http');
 var server = http.Server(app);
 var websocket = socketio(server);
 // set the port of our application
