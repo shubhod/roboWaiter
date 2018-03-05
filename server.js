@@ -1,6 +1,5 @@
 var express = require('express');
-var http = require('http')
-var socketio = require('socket.io');
+var http = require('http');
 var app = express();
 var server = http.Server(app);
 var websocket = socketio(server);
