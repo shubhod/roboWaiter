@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var http=require('http');
 var io=require('socket.io');
+var apiai=require('apiai');
 
 // set the port of our application
 // process.env.PORT lets the port be set by Heroku
@@ -23,16 +24,33 @@ app.get('/', function(req, res) {
 app.listen(port, function() {
     console.log('Our app is running on http://localhost:' + port);
 });
-// var express = require('express'),
-// var http=require('http')
-//     app = express(),
-// //     server = require('http').createServer(app),
-// //     io = require('socket.io').listen(server),
 
-// server.listen(process.env.PORT || 3000);
-// app.get('/', function(req, res) {
-
-//     // ejs render automatically looks in the views folder
-// res.send("hey");
+// var express = require('express');
+// var http = require('http')
+// var socketio = require('socket.io');
+// var apiai = require('apiai');
+// var app = express();
+// var server = http.Server(app);
+// var websocket = socketio(server);
+// server.listen(3000, () => console.log('listening on *:3000'));
+ 
+// var app = apiai("6206cd24076c499db50cda82dbd05422");
+//  websocket.on('connection', (socket) => {
+//   console.log('A client just joined on', socket.id);
+// 	socket.on("message",(data)=>{
+// 	console.log(data);
+// var request = app.textRequest(data, {
+//     sessionId: '12345dksahdk'
+// });
+// request.on('response', function(response) {
+//     console.log(response);
+// 	socket.emit('response',response);
+// });
+ 
+// request.on('error', function(error) {
+//     console.log(error);
+// });
+// request.end();	
+// 	});
 // });
 
