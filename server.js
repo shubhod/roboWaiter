@@ -1,9 +1,11 @@
 var express = require('express');
 var app = express();
 var http=require('http');
-var io=require('socket.io');
+var socketio=require('socket.io');
 var apiai=require('apiai');
 var port = process.env.PORT || 8080;
+var server = http.Server(app);
+var websocket = socketio(server);
 app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res) {
     res.send('hey');
@@ -17,8 +19,6 @@ app.listen(port, function() {
 // var socketio = require('socket.io');
 // var apiai = require('apiai');
 // var app = express();
-// var server = http.Server(app);
-// var websocket = socketio(server);
 // server.listen(port, () => console.log('listening on *:3000'));
 // var app = apiai("6206cd24076c499db50cda82dbd05422");
 // app.get('/', function(req, res) {
