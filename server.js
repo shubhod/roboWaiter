@@ -13,6 +13,9 @@ app.get('/', function(req, res) {
 app.listen(port, function() {
     console.log('Our app is running on http://localhost:' + port);
 });
+app.get('/',(req,res)=>{
+res.send("hey");
+});
  var app = apiai("6206cd24076c499db50cda82dbd05422");
  websocket.on('connection', (socket) => {
   console.log('A client just joined on', socket.id);
