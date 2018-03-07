@@ -3,21 +3,11 @@
 // var http=require('http');
 // var io=require('socket.io');
 // var apiai=require('apiai');
+// set the port of our application
+// process.env.PORT lets the port be set by Heroku
 
-var express = require('express');
-var http = require('http')
-var socketio = require('socket.io');
-var apiai = require('apiai');
-var app = express();
-var server = http.Server(app);
-var websocket = socketio(server);
-server.listen(3000, () => console.log('listening on *:3000'));
 
-// // set the port of our application
-// // process.env.PORT lets the port be set by Heroku
-// var port = process.env.PORT || 8080;
-
-// // set the view engine to ejs
+// set the view engine to ejs
 // app.set('view engine', 'ejs');
 
 // // make express look in the public directory for assets (css/js/img)
@@ -33,8 +23,15 @@ server.listen(3000, () => console.log('listening on *:3000'));
 // app.listen(port, function() {
 //     console.log('Our app is running on http://localhost:' + port);
 // });
-
- 
+var port = process.env.PORT || 8080;
+var express = require('express');
+var http = require('http')
+var socketio = require('socket.io');
+var apiai = require('apiai');
+var app = express();
+var server = http.Server(app);
+var websocket = socketio(server);
+server.listen(port, () => console.log('listening on *:3000'));
 var app = apiai("6206cd24076c499db50cda82dbd05422");
 app.get('/', function(req, res) {
     res.send('hey');
