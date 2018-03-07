@@ -13,6 +13,33 @@ app.get('/', function(req, res) {
 app.listen(port, function() {
     console.log('Our app is running on http://localhost:' + port);
 });
+ var app = apiai("6206cd24076c499db50cda82dbd05422");
+ websocket.on('connection', (socket) => {
+  console.log('A client just joined on', socket.id);
+	socket.on("message",(data)=>{
+	console.log(data);
+var request = app.textRequest(data, {
+    sessionId: '12345dksahdk'
+});
+request.on('response', function(response) {
+    console.log(response);
+	socket.emit('response',response);
+});
+ 
+request.on('error', function(error) {
+    console.log(error);
+});
+request.end();	
+	});
+});
+
+ 
+// request.on('error', function(error) {
+//     console.log(error);
+// });
+// request.end();	
+// 	});
+// });
 
 // var express = require('express');
 // var http = require('http')
@@ -24,22 +51,5 @@ app.listen(port, function() {
 // app.get('/', function(req, res) {
 //     res.send('hey');
 // });
-//  websocket.on('connection', (socket) => {
-//   console.log('A client just joined on', socket.id);
-// 	socket.on("message",(data)=>{
-// 	console.log(data);
-//     var request = app.textRequest(data, {
-//     sessionId: '12345dksahdk'
-// });
-// request.on('response', function(response) {
-//     console.log(response);
-// 	socket.emit('response',response);
-// });
- 
-// request.on('error', function(error) {
-//     console.log(error);
-// });
-// request.end();	
-// 	});
-// });
+
 
