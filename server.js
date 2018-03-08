@@ -13,6 +13,9 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.listen(port, function(){
     console.log('Our app is running on http://localhost:' + port);
 });
+app.get('/',(req,res)=>{
+res.send('hey');
+});
  var apps = apiai("6206cd24076c499db50cda82dbd05422");
 app.post('/',(req,res)=>{
 var request = apps.textRequest(req.body.query,{
@@ -27,7 +30,8 @@ request.on('response', function(response) {
 request.on('error', function(error) {
     console.log(error);
 });
-
+request.end();
+});
  
 // request.on('error', function(error) {
 //     console.log(error);
