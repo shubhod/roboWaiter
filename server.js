@@ -7,33 +7,25 @@ var port = process.env.PORT || 8080;
 var server = http.Server(app);
 var websocket = socketio(server);
 app.use(express.static(__dirname + '/public'));
-app.get('/', function(req, res) {
-    res.send('hey');
-});
-app.listen(port, function() {
+var bodyParser = require('body-parser');
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+app.listen(port, function(){
     console.log('Our app is running on http://localhost:' + port);
 });
-app.get('/',(req,res)=>{
-res.send("hey");
-});
- var app = apiai("6206cd24076c499db50cda82dbd05422");
- websocket.on('connection', (socket) => {
-  console.log('A client just joined on', socket.id);
-	socket.on("message",(data)=>{
-	console.log(data);
-var request = app.textRequest(data, {
+ var apps = apiai("6206cd24076c499db50cda82dbd05422");
+app.post('/',(req,res)=>{
+var request = apps.textRequest(req.body.query,{
     sessionId: '12345dksahdk'
 });
 request.on('response', function(response) {
     console.log(response);
-	socket.emit('response',response);
+	res.send(response);
 });
+	
  
 request.on('error', function(error) {
     console.log(error);
-});
-request.end();	
-	});
 });
 
  
