@@ -35,28 +35,28 @@ request.end();
 });
 
 
-var myArgs = process.argv.slice(2);
-var socketio=require('socket.io');
-var http=require('http');
-var express= require('express');
-var app= express();
-var port = process.env.PORT || 3000;
-var server=app.listen(port,()=>{ 
-console.log("server is up",port); 
-});
-var apps = apiai("6206cd24076c499db50cda82dbd05422");
-var io=socketio(server);
-io.on('connection',(socket)=>{
-	console.log("connected");
-	socket.emit('log',"dfsdfsdfsdf");
-	socket.on('apiai',(data)=>{
-	var request = apps.textRequest(req.body.query,{
-    	sessionId: '12345dksahdk'
-	});
-	request.on('response', function(response) {
-    	console.log(response);
-	socket.emit('response',response);
-});
+// var myArgs = process.argv.slice(2);
+// var socketio=require('socket.io');
+// var http=require('http');
+// var express= require('express');
+// var app= express();
+// var port = process.env.PORT || 3000;
+// var server=app.listen(port,()=>{ 
+// console.log("server is up",port); 
+// });
+// var apps = apiai("6206cd24076c499db50cda82dbd05422");
+// var io=socketio(server);
+// io.on('connection',(socket)=>{
+// 	console.log("connected");
+// 	socket.emit('log',"dfsdfsdfsdf");
+// 	socket.on('apiai',(data)=>{
+// 	var request = apps.textRequest(req.body.query,{
+//     	sessionId: '12345dksahdk'
+// 	});
+// 	request.on('response', function(response) {
+//     	console.log(response);
+// 	socket.emit('response',response);
+// });
 	
  
 // request.on('error', function(error) {
